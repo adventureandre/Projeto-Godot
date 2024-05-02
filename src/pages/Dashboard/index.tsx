@@ -1,3 +1,5 @@
+import { Conteiner } from './style'
+
 export const Dashboard = () => {
-  return <h1>Dashboard aki</h1>
+  return <Conteiner>Dashboard aki</Conteiner>
 }

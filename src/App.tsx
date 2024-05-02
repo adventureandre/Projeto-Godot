@@ -1,14 +1,10 @@
-import { ThemeProvider } from 'styled-components'
 import { AppRouter } from './Routers'
 import { GlobalStyles } from './styles/global'
-import { darkTheme, lightTheme } from './styles/theme'
-import { useState } from 'react'
+import { ThemeProvider } from './styles/theme-provider'
 
 export function App() {
-  const [isLightTheme, setIsLightTheme] = useState<boolean>(false)
-
   return (
-    <ThemeProvider theme={isLightTheme ? lightTheme : darkTheme}>
+    <ThemeProvider>
       <AppRouter />
       <GlobalStyles />
     </ThemeProvider>
