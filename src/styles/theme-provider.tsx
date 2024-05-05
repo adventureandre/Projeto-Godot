@@ -5,6 +5,7 @@ import { darkTheme, lightTheme } from './theme'
 // Definindo tipos
 interface ThemeContextType {
   setIsTheme: (theme: 'dark' | 'light') => void
+  theme: string | null
 }
 
 interface ThemeProviderProps {
@@ -15,6 +16,7 @@ interface ThemeProviderProps {
 // Criando o contexto
 const ThemeContext = createContext<ThemeContextType>({
   setIsTheme: () => {},
+  theme: 'light',
 })
 
 // Provedor do contexto
@@ -30,7 +32,7 @@ export const ThemeProvider = ({
   }
 
   return (
-    <ThemeContext.Provider value={{ setIsTheme }}>
+    <ThemeContext.Provider value={{ setIsTheme, theme }}>
       <ThemeProviderStyledComponents
         theme={theme === 'dark' ? darkTheme : lightTheme}
       >
