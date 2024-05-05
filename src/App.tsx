@@ -1,13 +1,16 @@
-import { ThemeProvider } from 'styled-components'
+import { Helmet, HelmetProvider } from 'react-helmet-async'
 import { AppRouter } from './Routers'
 import { GlobalStyles } from './styles/global'
-import { darkTheme } from './styles/theme'
+import { ThemeProvider } from './styles/theme-provider'
 
 export function App() {
   return (
-    <ThemeProvider theme={darkTheme}>
-      <AppRouter />
-      <GlobalStyles />
-    </ThemeProvider>
+    <HelmetProvider>
+      <Helmet titleTemplate="%s | AppCelular" />
+      <ThemeProvider>
+        <AppRouter />
+        <GlobalStyles />
+      </ThemeProvider>
+    </HelmetProvider>
   )
 }

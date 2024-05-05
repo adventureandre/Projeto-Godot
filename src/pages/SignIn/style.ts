@@ -6,5 +6,5 @@ export const Conteiner = styled.section`
   align-items: center;
 
   height: 100vh;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.toolTipBackground};
 `
