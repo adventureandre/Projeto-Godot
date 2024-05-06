@@ -20,6 +20,12 @@ export const StyledHeader = styled.header`
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  color: ${({ theme }) => theme.colors.white};
+
+  a {
+    text-decoration: none;
+    color: ${({ theme }) => theme.colors.primary};
+  }
 `
 
 export const StyledFormCadastro = styled.form`
@@ -37,6 +43,7 @@ export const StyledLabel = styled.label`
   gap: 5px;
   font-weight: 700;
   width: 100%;
+  color: ${({ theme }) => theme.colors.primary};
 `
 
 export const StyledInputCadastro = styled.input`
@@ -46,7 +53,7 @@ export const StyledInputCadastro = styled.input`
   width: 100%;
   padding: 15px 10px;
   border-radius: 6px;
-  border: 1px solid ${({ theme }) => theme['gray-100']};
-  color: ${({ theme }) => theme['gray-500']};
+  border: 1px solid ${({ theme }) => theme.colors.gray['gray-100']};
+  color: ${({ theme }) => theme.colors.gray['gray-500']};
   margin-bottom: 15px;
 `

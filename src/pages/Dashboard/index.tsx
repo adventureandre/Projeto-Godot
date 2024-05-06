@@ -19,8 +19,7 @@ export const Dashboard = () => {
         {theme}
       </button>
       <Conteiner>
-        Dashboard aki
-        <Button onClick={signOut} >Deslogar</Button>
+        Dashboard aki <Button onClick={signOut}>Deslogar</Button>
       </Conteiner>
     </>
   ) : (
