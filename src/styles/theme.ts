@@ -8,7 +8,17 @@ export interface iTheme {
     danger: string
     background: string
     border: string
-    gray: string
+    gray: {
+      'gray-100': string
+      'gray-200': string
+      'gray-300': string
+      'gray-400': string
+      'gray-500': string
+      'gray-600': string
+      'gray-700': string
+      'gray-800': string
+      'gray-900': string
+    }
     toolTipBackground: string
     toolTipBorder: string
   }
@@ -24,7 +34,17 @@ export const darkTheme: iTheme = {
     danger: '#F85640',
     background: '#181818',
     border: '#222222',
-    gray: '#AAAAAA',
+    gray: {
+      'gray-100': '#E1E1E6',
+      'gray-200': '#D0D0D5',
+      'gray-300': '#C4C4CC',
+      'gray-400': '#8D8D99',
+      'gray-500': '#7C7C8A',
+      'gray-600': '#323238',
+      'gray-700': '#29292E',
+      'gray-800': '#202024',
+      'gray-900': '#121214',
+    },
     toolTipBackground: '#25253475',
     toolTipBorder: '#373755',
   },
@@ -40,7 +60,17 @@ export const lightTheme: iTheme = {
     danger: '#F85640',
     background: '#FFFFFF',
     border: '#eee',
-    gray: '#7b7b7b',
+    gray: {
+      'gray-100': '#E1E1E6',
+      'gray-200': '#D0D0D5',
+      'gray-300': '#C4C4CC',
+      'gray-400': '#8D8D99',
+      'gray-500': '#7C7C8A',
+      'gray-600': '#323238',
+      'gray-700': '#29292E',
+      'gray-800': '#202024',
+      'gray-900': '#121214',
+    },
     toolTipBackground: '#eee',
     toolTipBorder: '#fff',
   },

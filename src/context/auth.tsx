@@ -1,8 +1,14 @@
-import { ReactNode, createContext, useEffect, useState } from 'react'
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 import { api } from '../lib/axios'
 
 interface UserProps {
-  id_account: string
+  id: string
   email: string
   password: string
 }
@@ -16,16 +22,27 @@ interface signInProps {
   password: string
 }
 
-export const AuthContext = createContext({})
+interface AuthContextType {
+  user: UserProps | null
+  signed: boolean
+  signIn: ({ email, password }: signInProps) => Promise<void>
+  signOut: () => void
+}
+
+export const AuthContext = createContext<AuthContextType>({
+  signIn: async () => {},
+  signOut: () => {},
+  signed: false,
+  user: null,
+})
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<UserProps | null>(null)
 
   const loadingStoreData = async () => {
-    const storegeUser = localStorage.getItem('@AuthAppCelular:user')
-    const storegeToken = localStorage.getItem('@AuthAppCelular:token')
+    const storegeUser = localStorage.getItem('@AuthGodot:user')
 
-    if (storegeUser && storegeToken) {
+    if (storegeUser) {
       const user: UserProps = JSON.parse(storegeUser)
       setUser(user)
     }
@@ -33,25 +50,28 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const signIn = async ({ email, password }: signInProps) => {
     try {
-      const response = await api.post('/sign-in', {
-        email,
-        password,
-      })
+      const response = await api.get('/accounts')
+      const accounts = response.data
 
-      setUser(response.data)
-
-      // So Para Exenplos vou enviar tudo kkkk tempo ta curto
-      localStorage.setItem(
-        '@AuthAppCelular:user',
-        JSON.stringify(response.data),
+      const foundAccount = accounts.find(
+        (account: UserProps) =>
+          account.email === email && account.password === password,
       )
+      if (foundAccount) {
+        setUser(foundAccount)
+
+        // // So Para Exenplos vou enviar tudo kkkk tempo ta curto
+        localStorage.setItem('@AuthGodot:user', JSON.stringify(foundAccount))
+
+        return foundAccount
+      }
     } catch (e) {
       throw new Error('Credenciais inválidas.')
     }
   }
 
   const signOut = () => {
-    localStorage.removeItem('@AuthAppCelular:user')
+    localStorage.removeItem('@AuthGodot:user')
     setUser(null)
   }
 
@@ -68,3 +88,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
+
+// Hook personalizado para usar o contexto
+export const useAuth = () => useContext(AuthContext)
