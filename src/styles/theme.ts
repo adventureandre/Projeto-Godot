@@ -19,6 +19,11 @@ export interface iTheme {
       'gray-800': string
       'gray-900': string
     }
+    green: {
+      'green-300': string
+      'green-500': string
+      'green-700': string
+    }
     toolTipBackground: string
     toolTipBorder: string
   }
@@ -45,6 +50,11 @@ export const darkTheme: iTheme = {
       'gray-800': '#202024',
       'gray-900': '#121214',
     },
+    green: {
+      'green-300': '#3aa88e',
+      'green-500': '#00875F',
+      'green-700': '#015F43',
+    },
     toolTipBackground: '#25253475',
     toolTipBorder: '#373755',
   },
@@ -70,6 +80,11 @@ export const lightTheme: iTheme = {
       'gray-700': '#29292E',
       'gray-800': '#202024',
       'gray-900': '#121214',
+    },
+    green: {
+      'green-300': '#3aa88e',
+      'green-500': '#00875F',
+      'green-700': '#015F43',
     },
     toolTipBackground: '#eee',
     toolTipBorder: '#fff',
